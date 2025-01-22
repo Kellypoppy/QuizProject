@@ -8,5 +8,5 @@
 # Emails: YAP.LI.XUAN@student.mmu.edu.my | MEMBER_EMAIL_2 
 # ************************************************************************* 
 
-
-print("hello")
+def main():
+    pass
