@@ -61,7 +61,7 @@ def displayquestion(number,userID):
     
     print(mark)
     with open('leaderboard.txt','a') as file:
-         file.write(userID + "," + str(mark)+ "/n")
+         file.write(userID + "," + category + "," + str(mark)+ "\n")
 
  
       
