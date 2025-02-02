@@ -1,5 +1,5 @@
 import random 
-import calculate
+
 
 questions = {
     "Math": [
@@ -18,27 +18,57 @@ questions = {
     ]
 }
 
-def displayquestion(number):
+mark=0
+
+
+def calculate(answer,correct,mark):
+    if answer == correct:
+        mark += 100
+        print("+100 mark")
+    else:
+        print("Incorrect answer")
+    return mark
+
+def displayquestion(number,userID):
+    global mark 
     if number == 1:
         category = "Math"
     if number == 2:
         category  = "English"
     
-    for i in questions[category]:
-        question_data=random.choice(questions[category])
+    question_list = questions[category]
+    random.shuffle(question_list)
+    for question_data in question_list:
+        print("Please enter a number:")
         print(f"Question: {question_data['question']}")
-        for i, option in enumerate(question_data['options'], 1):
-            print("Please enter number")
-            print(f"{i}. {option}")
-            
-        UserInput=int(input("Answer: "))
-        CorrectAnswer=question_data["answer"]
-        if UserInput <= 4:
-           calculate.calculate(UserInput,CorrectAnswer)
-        else:
-            print("Please enter correct number")
-            
-           
         
+        for i, option in enumerate(question_data['options'], 1):
+          print(f"{i}. {option}") 
+
+        while True:
+             try:    
+                UserInput=int(input("Answer: "))
+
+                if 1<= UserInput <= 4:
+                  UserAnswer=question_data['options'][UserInput-1]
+                  CorrectAnswer=question_data["answer"]
+                  mark=calculate(UserAnswer,CorrectAnswer,mark)
+                  break
+                else:
+                    print("Please enter a valid option number (1-4).")
+             except ValueError:
+                print("Invalid input. Please enter a number.")
+    
+    print(mark)
+    with open('leaderboard.txt','a') as file:
+         file.write(userID + "," + str(mark)+ "/n")
+
+ 
+      
+  
+        
+
+
+    
     
 

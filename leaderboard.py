@@ -1,6 +1,8 @@
-def leaderboard(score_list):
-    list=[["242FC242JW",23],["242FC24203",56],["242FC543",78],["242FC453",89]]
-    list.sort(key=lambda x: x[1], reverse=True)
-    for i in range(0,3):
-       print(f"{list[i][0]} {list[i][1]}")
+def leaderboard():
+    file=open('leaderboard.txt','a')
+    score_list=list(file)
+    print("Top three score")
+    score_list.sort(key=lambda x: x[1], reverse=True)
+    for i in range(min(3,len(score_list))): # make sure index wont out of range
+       print(f"{score_list[i][0]} {score_list[i][1]}")
 
