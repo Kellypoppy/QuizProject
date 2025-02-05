@@ -23,7 +23,7 @@ def login():
                 
                     # Check if the entered userID and password match the stored values
                     if userID == stored_userID and password == stored_password:
-                        print("Login successful!")
+                        print("Login successful! Press Enter to continue.")
                         # Exit the function on successful login
                         return userID
 

@@ -1,6 +1,1 @@
-bella,Math,100
-bella,English,400
-pepe,Math,200
-pepe,English,300
-kelly,Math,400
-kelly,English,500
+
