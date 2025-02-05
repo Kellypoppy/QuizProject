@@ -28,7 +28,7 @@ def quiz_menu(userID):
         if number == 0:
             print("Exiting quiz menu.")
             from restart_exit import restart_or_exit
-            if not restart_or_exit:
+            if not restart_or_exit():
                 break   # Exit the quiz menu and go restart function
         elif 0 < number < 3:
             displayquestion(number, userID)  # Takes subject and userID as arguments
