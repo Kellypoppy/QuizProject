@@ -1,5 +1,6 @@
 import random
 
+#Storing question
 questions = {
     "Math": [
         {"question": "What is 5 + 7?", "options": ["10", "12", "14", "16"], "answer": "12"},
