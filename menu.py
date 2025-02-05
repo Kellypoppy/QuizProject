@@ -51,5 +51,3 @@ def quiz_menu(userID):
         else:
             # Handle invalid subject selection
             print("Please enter a number between 0-2.")
-
-quiz_menu("bella")
