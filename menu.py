@@ -29,8 +29,7 @@ def quiz_menu(userID):
             print("Exiting quiz menu.")
             from restart_exit import restart_or_exit
             if not restart_or_exit:
-                break
-            restart_or_exit()  # Exit the quiz menu and go restart function
+                break   # Exit the quiz menu and go restart function
         elif 0 < number < 3:
             displayquestion(number, userID)  # Takes subject and userID as arguments
             print("Do you want to check leaderboard?\n")  # Ask if user wants to check the leaderboard
