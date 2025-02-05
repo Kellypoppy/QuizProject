@@ -1,5 +1,4 @@
-import random 
-
+import random
 
 questions = {
     "Math": [
@@ -18,10 +17,9 @@ questions = {
     ]
 }
 
-mark=0
+mark = 0
 
-
-def calculate(answer,correct,mark):
+def calculate(answer, correct, mark):
     if answer == correct:
         mark += 100
         print("+100 mark")
@@ -29,46 +27,60 @@ def calculate(answer,correct,mark):
         print("Incorrect answer")
     return mark
 
-def displayquestion(number,userID):
+def displayquestion(number, userID):  # Ensure userID is passed as an argument
     global mark 
-    if number == 1:
-        category = "Math"
-    if number == 2:
-        category  = "English"
     
+    # Finding out which subject the user wants
+    if int(number) == 1:
+        category = "Math"
+    elif int(number) == 2:
+        category = "English"
+    else:
+        print("Invalid category number")
+        return
+
+    # Retrieve the list of questions for the given category from the 'questions' dictionary
     question_list = questions[category]
+
+    # Randomizes the order of the list
     random.shuffle(question_list)
+
+    # Loops through the list
     for question_data in question_list:
         print("Please enter a number:")
+
+        # Prints the questions
         print(f"Question: {question_data['question']}")
-        
+
+        # Loop through the list of options and print each option with its corresponding index starting from 1
         for i, option in enumerate(question_data['options'], 1):
-          print(f"{i}. {option}") 
+            print(f"{i}. {option}")
 
         while True:
-             try:    
-                UserInput=int(input("Answer: "))
+            try:    
+                UserInput = int(input("Answer: "))
 
-                if 1<= UserInput <= 4:
-                  UserAnswer=question_data['options'][UserInput-1]
-                  CorrectAnswer=question_data["answer"]
-                  mark=calculate(UserAnswer,CorrectAnswer,mark)
-                  break
+                if number == 1 and 1 <= UserInput <= 4:
+
+                    # Stores the user answer, correct answer and marks
+                    UserAnswer = question_data['options'][UserInput - 1]
+                    CorrectAnswer = question_data["answer"]
+                    mark = calculate(UserAnswer, CorrectAnswer, mark)
+                    break
+                elif number == 2 and 1 <= UserInput <= 3:
+                    UserAnswer = question_data['options'][UserInput - 1]
+                    CorrectAnswer = question_data["answer"]
+                    mark = calculate(UserAnswer, CorrectAnswer, mark)
+                    break
                 else:
-                    print("Please enter a valid option number (1-4).")
-             except ValueError:
+                    print("Please enter a valid option number.")
+            except ValueError:
                 print("Invalid input. Please enter a number.")
-    
-    print(mark)
-    with open('leaderboard.txt','a') as file:
-         file.write(userID + "," + category + "," + str(mark)+ "\n")
 
- 
-      
-  
-        
-
-
-    
-    
-
+    print(f"Your total score is: {mark}")
+    # Ensure the userID is valid and correctly passed
+    if userID is not None:
+        with open('leaderboard.txt', 'a') as file:
+            file.write(f"{userID},{category},{mark}\n")
+    else:
+        print("Invalid user ID. Cannot record score.")

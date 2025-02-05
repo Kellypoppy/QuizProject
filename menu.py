@@ -1,5 +1,5 @@
 # ************************************************************************* 
-# Program: mwnu.py 
+# Program: menu.py 
 # Course: CSP1114 PROBLEM SOLVING AND PROGRAM DESIGN 
 # Lecture / Lab Section: TC1L / TL2L 
 # Trimester: 2430 
@@ -10,47 +10,41 @@
 
 from leaderboard import leaderboard
 from quiz import displayquestion
-from testing import login, register
 
+def quiz_menu(userID):
+    #userID: The ID of the user taking the quiz.
+    while True:
+        print("\nWhich subject do you want to try?\n")
+        print("MATH (1) ENGLISH (2) Exit (0)")
+        
+        try:
+            # Get user input and convert to an integer
+            number = int(input("Enter number: "))
+        except ValueError:
+            # Handle non-integer inputs
+            print("Invalid input! Please enter a number.")
+            continue
 
-def menu():
-  print("Welcome to the quiz")
-  print("1.Register")
-  print("2.login")
-  choice=int(input("Enter: "))
-  if choice == 1:
-     print("Registering...")
-     register()
-     menu()
-  elif choice == 2:
-     print("Login page")
-     userID=login()
-  else:
-     print("Invalid number please try again")
-     menu()
-   # Only proceed if login was successful
-  while userID:
-      print("Which subject do you want to try?\n")
-      print("MATH(1) ENGLISH(2) Leaderboard(3) Exit(0)")
-      number=int(input("Enter number: "))
-      if number == 0:
-         return
-      elif  0 < number < 3:
-          displayquestion(number,userID)
-          print("Do you want to check leaderboard?\n")
-          UserInput=input("Yes or No?\n").upper()
-          if UserInput == "YES":
-             leaderboard()
-          elif UserInput == "NO":
-             print("Going back...")
-             continue
-          else:
-             print("Please enter valid input")
+        if number == 0:
+            print("Exiting quiz menu.")
+            from restart_exit import restart_or_exit
+            if not restart_or_exit:
+                break
+            restart_or_exit()  # Exit the quiz menu and go restart function
+        elif 0 < number < 3:
+            displayquestion(number, userID)  # Takes subject and userID as arguments
+            print("Do you want to check leaderboard?\n")  # Ask if user wants to check the leaderboard
+            user_input = input("Yes or No?\n").upper()
 
-      elif number == 3:
-         leaderboard()
-         continue
-      else:
-         print("Please enter between 0-3")
-
-menu()
+            if user_input == "YES":
+                leaderboard(number)  # Go to leaderboard function
+            elif user_input == "NO":
+                # Return to quiz selection if user does not want to check leaderboard
+                print("Going back to quiz selection...")
+                continue
+            else:
+                # Handle invalid input for leaderboard choice
+                print("Please enter a valid input.")
+        else:
+            # Handle invalid subject selection
+            print("Please enter a number between 0-2.")

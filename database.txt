@@ -1,4 +1,0 @@
-ye,ye
-yu,u
-q,q
-id,id
