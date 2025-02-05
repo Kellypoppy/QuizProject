@@ -4,3 +4,10 @@ bella,English,100
 bella,English,200
 callie,English,500
 callie,Math,700
+bella,English,100
+bella,Math,200
+bella,Math,100
+bella,Math,300
+bella,English,300
+bella,Math,200
+bella,English,400

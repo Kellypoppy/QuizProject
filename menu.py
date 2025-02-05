@@ -32,18 +32,24 @@ def quiz_menu(userID):
                 break   # Exit the quiz menu and go restart function
         elif 0 < number < 3:
             displayquestion(number, userID)  # Takes subject and userID as arguments
-            print("Do you want to check leaderboard?\n")  # Ask if user wants to check the leaderboard
-            user_input = input("Yes or No?\n").upper()
 
-            if user_input == "YES":
-                leaderboard(number)  # Go to leaderboard function
-            elif user_input == "NO":
-                # Return to quiz selection if user does not want to check leaderboard
-                print("Going back to quiz selection...")
-                continue
-            else:
-                # Handle invalid input for leaderboard choice
-                print("Please enter a valid input.")
+            while True:
+              print("Do you want to check leaderboard?\n")  # Ask if user wants to check the leaderboard
+              user_input = input("Yes or No?\n").upper()
+
+              if user_input == "YES":
+                  leaderboard(number) # Go to leaderboard function
+                  break  
+              elif user_input == "NO":
+                 # Return to quiz selection if user does not want to check leaderboard
+                 print("Going back to quiz selection...")
+                 break
+              else:
+                 # Handle invalid input for leaderboard choice
+                  print("Please enter a valid input.")
+
         else:
             # Handle invalid subject selection
             print("Please enter a number between 0-2.")
+
+quiz_menu("bella")
