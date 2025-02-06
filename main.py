@@ -42,7 +42,8 @@ def main():
             import menu
             menu.quiz_menu(userID)
         elif choice == 3:
-            print("Exiting the application. Goodbye!")
+            print("Exiting the application... Goodbye!")
+            input()
             exit() # Exit the loop and end the program
         else:
             # Handle invalid menu selection
