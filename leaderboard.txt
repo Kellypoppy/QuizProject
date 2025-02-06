@@ -1,2 +1,6 @@
 dangdang,English,300
-bella,Math,200
+dangdang,Math,200
+callie,English,400
+bella,Math,400
+callie,English,200
+bella,English,500
