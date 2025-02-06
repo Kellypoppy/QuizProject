@@ -25,7 +25,7 @@ def quiz_menu(userID):
             print("Invalid input! Please enter a number.")
             continue
 
-        if number == 0:
+        if number == 0: 
             print("Exiting quiz menu.")
             from restart_exit import restart_or_exit
             if not restart_or_exit():
@@ -33,17 +33,17 @@ def quiz_menu(userID):
         elif 0 < number < 3:
             displayquestion(number, userID)  # Takes subject and userID as arguments
 
-            while True:
+            while True: # Loop until valid input for leaderboard check
               print("Do you want to check leaderboard?\n")  # Ask if user wants to check the leaderboard
               user_input = input("Yes or No?\n").upper()
 
               if user_input == "YES":
-                  leaderboard(number) # Go to leaderboard function
-                  break  
+                  leaderboard(number) # Display the leaderboard for the selected subject
+                  break  # Exit leaderboard prompt
               elif user_input == "NO":
                  # Return to quiz selection if user does not want to check leaderboard
                  print("Going back to quiz selection...")
-                 break
+                 break # Exit leaderboard prompt 
               else:
                  # Handle invalid input for leaderboard choice
                   print("Please enter a valid input.")

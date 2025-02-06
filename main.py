@@ -23,13 +23,14 @@ def main():
         print("3. Exit")
         
         try:
+            # Get user choice input
             choice = int(input("Enter choice: "))
         
         # Handles the error if user inputs other things
         except ValueError:
             print("Invalid input! Please enter a number.")
             continue
-
+        
         if choice == 1:
             print("Register page")
             import register  # Go to register function
@@ -42,9 +43,10 @@ def main():
             menu.quiz_menu(userID)
         elif choice == 3:
             print("Exiting the application. Goodbye!")
-            input()
-            break  # Exit the loop and end the program
+            exit() # Exit the loop and end the program
         else:
+            # Handle invalid menu selection
             print("Invalid number. Please try again.")
-    
+            
+# start main function  
 main()

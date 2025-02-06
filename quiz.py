@@ -18,9 +18,10 @@ questions = {
     ]
 }
 
-mark = 0
+
 
 def calculate(answer, correct, mark):
+    #Check whether answer is equal to correctAnswer
     if answer == correct:
         mark += 100
         print("+100 mark")
@@ -30,7 +31,8 @@ def calculate(answer, correct, mark):
 
 def displayquestion(number, userID):  # Ensure userID is passed as an argument
     global mark 
-    
+    mark = 0 #Initialize mark 
+
     # Finding out which subject the user wants
     if int(number) == 1:
         category = "Math"
@@ -57,7 +59,7 @@ def displayquestion(number, userID):  # Ensure userID is passed as an argument
         for i, option in enumerate(question_data['options'], 1):
             print(f"{i}. {option}")
 
-        while True:
+        while True: #Loop until user exit
             try:    
                 UserInput = int(input("Answer: "))
 
@@ -74,11 +76,15 @@ def displayquestion(number, userID):  # Ensure userID is passed as an argument
                     mark = calculate(UserAnswer, CorrectAnswer, mark)
                     break
                 else:
+                    #Handle invalid option answer
                     print("Please enter a valid option number.")
             except ValueError:
+                #Handle invalid input
                 print("Invalid input. Please enter a number.")
 
+    #Display user's score
     print(f"Your total score is: {mark}")
+    
     # Ensure the userID is valid and correctly passed
     if userID is not None:
         with open('leaderboard.txt', 'a') as file:
