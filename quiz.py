@@ -20,7 +20,7 @@ questions = {
 
 
 
-def calculate(answer, correct, mark):
+def CheckAnswer(answer, correct, mark):
     #Check whether answer is equal to correctAnswer
     if answer == correct:
         mark += 100
@@ -68,12 +68,12 @@ def displayquestion(number, userID):  # Ensure userID is passed as an argument
                     # Stores the user answer, correct answer and marks
                     UserAnswer = question_data['options'][UserInput - 1]
                     CorrectAnswer = question_data["answer"]
-                    mark = calculate(UserAnswer, CorrectAnswer, mark)
+                    mark = CheckAnswer(UserAnswer, CorrectAnswer, mark)
                     break
                 elif number == 2 and 1 <= UserInput <= 3:
                     UserAnswer = question_data['options'][UserInput - 1]
                     CorrectAnswer = question_data["answer"]
-                    mark = calculate(UserAnswer, CorrectAnswer, mark)
+                    mark = CheckAnswer(UserAnswer, CorrectAnswer, mark)
                     break
                 else:
                     #Handle invalid option answer
